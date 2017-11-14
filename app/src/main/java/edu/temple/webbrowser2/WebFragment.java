@@ -15,6 +15,7 @@ public class WebFragment extends Fragment {
 
 
     private WebView webView;
+    public String url;
 
     public WebFragment() {
         // Required empty public constructor
@@ -23,6 +24,7 @@ public class WebFragment extends Fragment {
     public static WebFragment newInstance(String url) {
         WebFragment fragment = new WebFragment();
         Bundle args = new Bundle();
+
         args.putString("url", url);
         fragment.setArguments(args);
         return fragment;
@@ -43,7 +45,11 @@ public class WebFragment extends Fragment {
 
     public void changeSite(String url) {
 
-        if(!url.isEmpty()){
+        if(!url.isEmpty() && !url.equals(null)){
+            this.url = url;
+            if (!url.contains("http://") && !url.contains("https://")) {
+                url = "http://" + url;
+            }
             webView.loadUrl(url);
         }
     }

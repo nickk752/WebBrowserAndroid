@@ -2,17 +2,17 @@
     xmlns:android="http://schemas.android.com/apk/res/android" >
     <item
         android:id="@+id/backButton"
-        android:icon="@android:drawable/arrow_down_float"
+        android:icon="@drawable/ic_chevron_left_black_24dp"
         android:title="Back"
         app:showAsAction="always" />
     <item
         android:id="@+id/forwardButton"
-        android:icon="@android:drawable/arrow_up_float"
+        android:icon="@drawable/ic_chevron_right_black_24dp"
         android:title="Forward"
         app:showAsAction="always" />
     <item
         android:id="@+id/newTabButton"
-        android:icon="?android:attr/actionModeCopyDrawable"
+        android:icon="@drawable/ic_add_black_24dp"
         android:title="New_Tab"
         app:showAsAction="always" />
 </menu>

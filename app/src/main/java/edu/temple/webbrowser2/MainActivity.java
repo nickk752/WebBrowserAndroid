@@ -41,8 +41,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        //Toolbar urlToolbar = (Toolbar) findViewById(R.id.urlToolbar);
-        //setSupportActionBar(urlToolbar);
+        Toolbar urlToolbar = (Toolbar) findViewById(R.id.urlToolbar);
+        setSupportActionBar(urlToolbar);
 
 
         fragments.add(WebFragment.newInstance("http://www.google.com"));
@@ -143,14 +143,20 @@ public class MainActivity extends AppCompatActivity {
             case R.id.backButton:
                 int current = (pager.getCurrentItem() - 1) % NUM_FRAGS;
                 pager.setCurrentItem(current);
+                currentFragNum = current;
+
+                urlEditText.setText(fragments.get(currentFragNum).url);
                 return true;
             case R.id.forwardButton:
                 current = (pager.getCurrentItem() + 1) % NUM_FRAGS;
                 pager.setCurrentItem(current);
+                currentFragNum = current;
+                urlEditText.setText(fragments.get(currentFragNum).url);
                 return true;
             case R.id.newTabButton:
-                WebFragment newFrag = WebFragment.newInstance("");
-                fragments.add(currentFragNum, newFrag);
+                WebFragment newFrag = WebFragment.newInstance("http://google.com");
+                fragments.add(NUM_FRAGS, newFrag);
+                currentFragNum = NUM_FRAGS;
                 NUM_FRAGS++;
 
                 fragAdapter.notifyDataSetChanged();
